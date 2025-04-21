@@ -18,7 +18,8 @@ class EnvMode(enum.Enum):
     ALOHA_SIM = "aloha_sim"
     DROID = "droid"
     LIBERO = "libero"
-
+    # virtualkss
+    SJJ_ORANGE = "sjj_orange"
 
 @dataclasses.dataclass
 class Checkpoint:
@@ -73,6 +74,11 @@ DEFAULT_CHECKPOINT: dict[EnvMode, Checkpoint] = {
         config="pi0_fast_libero",
         dir="s3://openpi-assets/checkpoints/pi0_fast_libero",
     ),
+    # virtualkss
+	EnvMode.SJJ_ORANGE: Checkpoint(
+		config="pi0_sjj_orange_test",
+		dir="/home/work/.jinupahk/virtualkss/openpi/checkpoints/pi0_sjj_orange/virtualkss_orange/19999" # 경로는 아래 assets/ 그리고 params/ 디렉토리가 있어야 함.
+	),
 }
 
 

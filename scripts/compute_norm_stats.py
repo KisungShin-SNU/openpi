@@ -50,10 +50,10 @@ def main(config_name: str, max_frames: int | None = None):
 
     data_loader = _data_loader.TorchDataLoader(
         dataset,
-        local_batch_size=1,
-        num_workers=8,
+        local_batch_size=8,# virtualkss 1,
+        num_workers= 8,# virtualksss 8,
         shuffle=shuffle,
-        num_batches=num_frames,
+        num_batches=num_frames // 8, # virtualkss
     )
 
     keys = ["state", "actions"]
