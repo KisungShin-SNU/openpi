@@ -1,6 +1,6 @@
 # openpi with seongjun+doyeon+kisung
 ## Finetuning
-'''
+```
 # git repo fork
 # git clone
 # cd repo
@@ -29,8 +29,7 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/t
 
 # open nhn session with preopend port 8000
 uv run scripts/serve_policy.py --env SJJ_ORANGE --default_prompt 'put in a orange juice can in to the bag' --record
-
-'''
+```
 
 
 # openpi
