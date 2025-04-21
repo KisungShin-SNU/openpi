@@ -1,3 +1,38 @@
+# openpi with seongjun+doyeon+kisung
+## Finetuning
+'''
+# git repo fork
+# git clone
+# cd repo
+# git submodule 
+
+conda create -n openpi_virtualkss python=3.11
+conda activate openpi_virtualkss
+pip install uv
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
+
+pip install --user huggingface_hub
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc source ~/.bashrc
+pip install -U "huggingface_hub[cli]"
+huggingface-cli login
+# git credential: no
+
+# download own mobile aloha hdf5 file
+# remove (or change comment) cam_low from examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py
+# uv run examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py --raw-dir sjjeong/bag/ --repo-id virtualkss/mobile_aloha_sjjeong
+uv run examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py --raw-dir data/sjj_250418/orange/ --repo-id virtualkss/openpi_mo-aloha_sjj_orange
+
+# change batch size params in compute_norm_stats.py
+uv run scripts/compute_norm_stats.py --config-name pi0_sjj_orange
+CUDA_VISIBLE_DEVICES=4,5,6,7 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi0_sjj_orange --exp-name=virtualkss_orange
+
+# open nhn session with preopend port 8000
+uv run scripts/serve_policy.py --env SJJ_ORANGE --default_prompt 'put in a orange juice can in to the bag' --record
+
+'''
+
+
 # openpi
 
 openpi holds open-source models and packages for robotics, published by the [Physical Intelligence team](https://www.physicalintelligence.company/).
