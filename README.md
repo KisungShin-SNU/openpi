@@ -4,7 +4,7 @@
 # git repo fork
 # git clone
 # cd repo
-# git submodule 
+git submodule update --init --recursive
 
 conda create -n openpi_virtualkss python=3.11
 conda activate openpi_virtualkss
