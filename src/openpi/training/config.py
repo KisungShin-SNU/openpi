@@ -616,10 +616,10 @@ _CONFIGS = [
 
     # virtualkss
     TrainConfig(
-        name="pi0_sjj_orange",
+        name="pi0_sjj_bag",
         model=pi0.Pi0Config(),
         data=LeRobotAlohaDataConfig(
-            repo_id="virtualkss/openpi_mo-aloha_sjj_orange",
+            repo_id="virtualkss/openpi_mo-aloha_sjj_bag",
             assets=AssetsConfig(
                 assets_dir="s3://openpi-assets/checkpoints/pi0_base/assets",
                 asset_id="trossen",
@@ -647,10 +647,10 @@ _CONFIGS = [
             ),
         ),
         weight_loader=weight_loaders.CheckpointWeightLoader("s3://openpi-assets/checkpoints/pi0_base/params"),
-        num_train_steps=20_000,
+        num_train_steps=40_000,
     ),
     TrainConfig(
-        name="pi0_sjj_orange_test",
+        name="pi0_sjj_bag_test",
         model=pi0.Pi0Config(),
         data=LeRobotAlohaDataConfig(
             assets=AssetsConfig(asset_id="trossen"),
@@ -690,6 +690,14 @@ _CONFIGS = [
         ),
         weight_loader=weight_loaders.CheckpointWeightLoader("s3://openpi-assets/checkpoints/pi0_base/params"),
         num_train_steps=40_000,
+    ),
+    TrainConfig(
+        name="pi0_sjj_towel_test",
+        model=pi0.Pi0Config(),
+        data=LeRobotAlohaDataConfig(
+            assets=AssetsConfig(asset_id="trossen"),
+            default_prompt="wipe under the orange juice can",
+        ),
     ),
 
     # This config is used to demonstrate how to train on a simple simulated environment.

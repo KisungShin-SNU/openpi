@@ -1,6 +1,5 @@
 # virtualkss
 checkpoints/
-data/
 policy_records/
 
 # Data directories.

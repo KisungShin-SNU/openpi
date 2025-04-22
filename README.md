@@ -20,15 +20,18 @@ huggingface-cli login
 
 # download own mobile aloha hdf5 file
 # remove (or change comment) cam_low from examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py
-# uv run examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py --raw-dir sjjeong/bag/ --repo-id virtualkss/mobile_aloha_sjjeong
-uv run examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py --raw-dir data/sjj_250418/orange/ --repo-id virtualkss/openpi_mo-aloha_sjj_orange
+uv run examples/aloha_real/convert_aloha_data_to_lerobot_virtualkss.py --raw-dir ../data/bag --repo-id virtualkss/openpi_mo-aloha_sjj_bag
 
 # change batch size params in compute_norm_stats.py
-uv run scripts/compute_norm_stats.py --config-name pi0_sjj_orange
-CUDA_VISIBLE_DEVICES=4,5,6,7 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi0_sjj_orange --exp-name=virtualkss_orange
+uv run scripts/compute_norm_stats.py --config-name pi0_sjj_bag
+CUDA_VISIBLE_DEVICES=4,5,6,7 XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi0_sjj_bag --exp-name=virtualkss_bag
 
 # open nhn session with preopend port 8000
-uv run scripts/serve_policy.py --env SJJ_ORANGE --default_prompt 'put in a orange juice can in to the bag' --record
+uv run scripts/serve_policy.py --env SJJ_bag --default_prompt 'put in a orange juice can in to the bag' --record
+
+# inference
+uv run scripts/serve_policy.py --env SJJ_BAG --default_prompt 'put in a orange juice can in to the bag' --record
+uv run scripts/serve_policy.py --env SJJ_TOWEL --default_prompt 'wipe under the orange juice can' --record
 ```
 
 

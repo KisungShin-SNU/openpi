@@ -19,7 +19,8 @@ class EnvMode(enum.Enum):
     DROID = "droid"
     LIBERO = "libero"
     # virtualkss
-    SJJ_ORANGE = "sjj_orange"
+    SJJ_BAG = "sjj_bag"
+    SJJ_TOWEL = "sjj_towel"
 
 @dataclasses.dataclass
 class Checkpoint:
@@ -75,9 +76,13 @@ DEFAULT_CHECKPOINT: dict[EnvMode, Checkpoint] = {
         dir="s3://openpi-assets/checkpoints/pi0_fast_libero",
     ),
     # virtualkss
-	EnvMode.SJJ_ORANGE: Checkpoint(
-		config="pi0_sjj_orange_test",
-		dir="/home/work/.jinupahk/virtualkss/openpi/checkpoints/pi0_sjj_orange/virtualkss_orange/19999" # 경로는 아래 assets/ 그리고 params/ 디렉토리가 있어야 함.
+	EnvMode.SJJ_BAG: Checkpoint(
+		config="pi0_sjj_bag_test",
+		dir="/home/work/.jinupahk/virtualkss/openpi/checkpoints/pi0_sjj_bag/virtualkss_bag/20000" # 경로는 아래 assets/ 그리고 params/ 디렉토리가 있어야 함.
+	),
+    EnvMode.SJJ_TOWEL: Checkpoint(
+		config="pi0_sjj_towel_test",
+		dir="/home/work/.jinupahk/virtualkss/openpi/checkpoints/pi0_sjj_towel/virtualkss_towel/20000" # 경로는 아래 assets/ 그리고 params/ 디렉토리가 있어야 함.
 	),
 }
 
